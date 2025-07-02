@@ -1,7 +1,9 @@
 #print("greetings boots")
+import sys
 from stats import get_num_words
 from stats import get_char_counts
 from stats import sort_char_counts
+
 
 def get_books_text(filepath):
     with open(filepath) as f:
@@ -10,6 +12,9 @@ def get_books_text(filepath):
 
 
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     """
     book_path = "books/frankenstein.txt"
     book_text = get_books_text(book_path)
@@ -22,7 +27,7 @@ def main():
     char_counts = get_char_counts(book_text)
     print(char_counts)
     """
-    book_path = "books/frankenstein.txt"
+    book_path = sys.argv[1]
     book_text = get_books_text(book_path)
 
     num_words = get_num_words(book_text)
